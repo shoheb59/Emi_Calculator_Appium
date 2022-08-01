@@ -89,7 +89,12 @@ public class EmiPage {
         txt_ProcessingFree.sendKeys(""+fee+"");
         btn_Calculate.click();
 
+
     }
+    public void reset()
+    {
+        btn_Reset.click();
+   }
 
 
 

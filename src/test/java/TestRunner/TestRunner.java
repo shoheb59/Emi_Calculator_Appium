@@ -24,6 +24,7 @@ public class TestRunner extends AppSetup {
     public void RunTest(int loanAmount, double rInterest, int period, double pFee, int PreviewAmount, double previewInterest, double previewProcessingFee, int previewTotalPayment )
     {
         EmiPage emiPage = new EmiPage(driver);
+        emiPage.reset();
         emiPage.calculateEMI(loanAmount, rInterest, period, pFee);
 
         String emi = emiPage.Preview_MonthlyEmi.getText();
@@ -36,8 +37,14 @@ public class TestRunner extends AppSetup {
         Assert.assertEquals(Integer.parseInt(String.valueOf(Math.round(Double.parseDouble(processingFee.replace(",",""))))),previewProcessingFee);
         Assert.assertEquals(Integer.parseInt(String.valueOf(Math.round(Double.parseDouble(totalPayment.replace(",",""))))),previewTotalPayment);
 
-        emiPage.btn_Reset.click();
+
+
 
 
     }
+   @Test(priority = 3)
+    public void reset() {
+        EmiPage emiPage = new EmiPage(driver);
+        emiPage.reset();
+   }
 }
